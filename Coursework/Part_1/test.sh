@@ -59,7 +59,7 @@ echo -e "\n\n ~~ FILE FORMAT ~~"
 # handling a maze with invalid size
 echo -n "Testing for invalid size of maze - "
 
-./maze testcases/TooLarge.txt > tmp;
+./maze testcases/TooSmall.txt > tmp;
 
 if grep -q "Invalid maze format." tmp;
 then
@@ -80,6 +80,18 @@ else
     echo "FAIL"
 fi
 
+# handling a maze that does not have all the components (S, E)
+echo -n "Testing for incompleted maze - "
+
+./maze testcases/NoSorE.txt > tmp;
+
+if grep -q "Invalid maze format." tmp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
 ######## GAMEPLAY FUNCTIONALITY SECTION #######
 echo -e "\n\n ~~ GAMEPLAY FUNCTIONALITY ~~"
 
@@ -89,6 +101,18 @@ echo -n "Handling invalid inputs - "
 echo "N" | ./maze testcases/test1.txt > tmp
 
 if grep -q "Invalid input. TIPS: <WASD for navigation> <M for map>";
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+# Testing if the coordinates of the player has been recorded and be ready to embed on to the map
+echo -n "Testing map coordinates - "
+
+echo "D" | ./maze testcases/test1.txt > tmp
+
+if grep -q "Movement recorded." tmp;
 then
     echo "PASS"
 else
@@ -120,7 +144,6 @@ fi
 #fi
 
 # Testing if the map is shown when "M" is entered
-
 echo -n "Map showing - "
 
 echo "M" | ./maze testcases/test1.txt > tmp;
@@ -133,7 +156,6 @@ else
 fi
 
 # Testing if the player can actually win by touching "E"
-
 echo -n "Wining the game - "
 
 ./maze testcase/test2.txt < inputs/win.txt > tmp
@@ -144,18 +166,5 @@ then
 else
     echo "FAIL"
 fi
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 rm -f tmp
