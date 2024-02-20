@@ -1,17 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// struct as a matrix
+
 void OpenMaze (char filename) {
     
 }
+
+// store the maze with struct
 
 
 
 int main (int argc, char* argv[]) {
 
     // users pass the maze file through commandline
+        // invalid input handling
 
+    // open the maze
+        // verify the format
     OpenMaze (filename);
+
+    // locate the "S"
+    // Place the "X" on "S"
 
 
     // Start playing the maze
@@ -21,6 +31,7 @@ int main (int argc, char* argv[]) {
         case "a":
 
             // Going to the left
+            // write the 
 
             break;
 
