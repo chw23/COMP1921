@@ -1,7 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// struct as a matrix
+// struct as a 2D Array
+// read the maze as lines of strings
+// access the characters individually
+
+
+
+
+
+
 
 void OpenMaze (char filename) {
     
@@ -59,7 +67,8 @@ int main (int argc, char* argv[]) {
         case "M":
         case "m":
 
-            // Open the map
+            // for loop to print the whole maze
+            // 
 
             break;
 
