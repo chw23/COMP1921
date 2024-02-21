@@ -107,7 +107,7 @@ else
     echo "FAIL"
 fi
 
-# Testing if the coordinates of the player has been recorded and be ready to embed on to the map
+# Testing if the coordinates of the player has been recorded
 echo -n "Testing map coordinates - "
 
 echo "D" | ./maze testcases/test1.txt > tmp
@@ -130,18 +130,6 @@ then
 else
     echo "FAIL"
 fi
-
-# Testing for the ability to pass through ' ' the gap
-#echo -n "Passing through - "
-
-#./maze testcase/test1.txt < inputs/passThrough.txt > tmp
-
-#if grep -q tmp;
-#then
-#    echo "PASS"
-#else
-#    echo "FAIL"
-#fi
 
 # Testing if the map is shown when "M" is entered
 echo -n "Map showing - "
