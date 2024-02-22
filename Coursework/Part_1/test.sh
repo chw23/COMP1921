@@ -29,6 +29,8 @@ else
     echo "FAIL"
 fi
 
+# testing for wrong file type
+
 # testing for handling multiple maze files
 echo -n "Testing multiple maze files - "
 
@@ -107,8 +109,14 @@ else
     echo "FAIL"
 fi
 
-# Testing if the coordinates of the player has been recorded
-echo -n "Testing map coordinates - "
+# Testing for passing a number
+
+#Testing for emoji
+
+
+
+# Testing to go right
+echo -n "Testing going right - "
 
 echo "D" | ./maze testcases/test1.txt > tmp
 
@@ -118,6 +126,12 @@ then
 else
     echo "FAIL"
 fi
+
+# Testing to go left
+
+# Testing to go up
+
+#Testing to go down
 
 # It keeps going towards 'X' (walls & edges)
 echo -n "Opstacle handling - "

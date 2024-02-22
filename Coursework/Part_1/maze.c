@@ -11,6 +11,9 @@ typedef struct __MAZE {
 } Maze;
 
 
+// ***** counter for char "S" "E" only one should be 
+
+
 // initiate the coordinates of the player and shd be fitted in maze[][]
 int corX = 0; // rows
 int corY = 0; // columns
@@ -43,6 +46,10 @@ bool Win (int x, int y) {
     
 }
 
+char PrintMaze () {
+
+}
+
 
 int main (int argc, char* argv[]) {
 
@@ -56,6 +63,9 @@ int main (int argc, char* argv[]) {
 
     // locate the "S"
     // Place the "X" on "S"
+
+    PrintMaze();
+    
 
 
     // Start playing the maze
