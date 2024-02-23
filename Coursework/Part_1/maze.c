@@ -11,7 +11,9 @@ typedef struct __MAZE {
 } Maze;
 
 
-// ***** counter for char "S" "E" only one should be 
+// variables to count char "S" "E" 
+int S = 0;
+int E = 0;
 
 
 // initiate the coordinates of the player and shd be fitted in maze[][]
@@ -21,6 +23,19 @@ int corY = 0; // columns
 
 void OpenMaze (char filename) {
     // reads in the file 
+    // scan through the lines
+    // If "S" is detected, S++
+    // If "E" is detected, E++
+    // Loaded successful when (S = 1 and E = 1)
+    // if not then return error message
+}
+
+char PrintMaze () {
+    // for loop
+    // print the maze line by line
+    // if the character (maze[][]) =  current coordinates (corX, corY)
+    // then replace that (should be either "S" or " ") by "X"
+    
 }
 
 bool Compare (int x, int y) {
@@ -42,14 +57,9 @@ bool Win (int x, int y) {
     
     // Check if its a "W" by ASCII
     // Yes: print congratulations and exit the game
-    // No: break;
+    // No: continue the game
     
 }
-
-char PrintMaze () {
-
-}
-
 
 int main (int argc, char* argv[]) {
 
@@ -60,9 +70,6 @@ int main (int argc, char* argv[]) {
         // verify the format
 
     OpenMaze (filename);
-
-    // locate the "S"
-    // Place the "X" on "S"
 
     PrintMaze();
     
@@ -75,21 +82,29 @@ int main (int argc, char* argv[]) {
         case "a":
 
             corX = corX - 1;
-            if (Compare (corX, corY)) {
-                Win (corX, corY);
-            } 
-            printf("Movement recorded.");
-
+            if (Compare (corX, corY)) {  // Bool function return true if player move into " "
+                printf("You went to the left!");
+                Win (corX, corY);  // see if they have arrived "E" yet
+            else {
+                corX = corX + 1;
+                printf("You hit the wall :(");
+                }
+            }
+            
             break;
 
         case "S":
         case "s":
 
             corY = corY + 1;
-            if (Compare (corX, corY)) {
-                Win (corX, corY);
+            if (Compare (corX, corY)) {  // Bool function return true if player move into " "
+                printf("You went down!");
+                Win (corX, corY);  // see if they have arrived "E" yet
+            else {
+                corY = corY - 1;
+                printf("You hit the wall :(");
+                }
             }
-            printf("Movement recorded.");
 
             break;
 
@@ -97,10 +112,14 @@ int main (int argc, char* argv[]) {
         case "d":
 
             corX = corX + 1;
-            if (Compare (corX, corY)) {
-                Win (corX, corY);
+            if (Compare (corX, corY)) {  // Bool function return true if player move into " "
+                printf("You went to the right!");
+                Win (corX, corY);  // see if they have arrived "E" yet
+            else {
+                corX = corX - 1;
+                printf("You hit the wall :(");
+                }
             }
-            printf("Movement recorded.");
 
             break;
 
@@ -108,21 +127,20 @@ int main (int argc, char* argv[]) {
         case "w":
 
             corY = corY - 1;
-            if (Compare (corX, corY)) {
-                Win (corX, corY);
+            if (Compare (corX, corY)) {  // Bool function return true if player move into " "
+                printf("You went up!");
+                Win (corX, corY);  // see if they have arrived "E" yet
+            else {
+                corY = corY + 1;
+                printf("You hit the wall :(");
+                }
             }
-            printf("Movement recorded.");
-
             break;
 
         case "M":
         case "m":
 
-            for (int i= 0; i < sizeof(maze[0]); i++) {
-                // print the maze line by line
-                // if the char (maze[][]) =  current coordinates (corX, corY)
-                // then replace " " by "X"
-            }
+            PrintMaze();
 
             break;
 
