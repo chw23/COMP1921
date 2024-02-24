@@ -11,22 +11,23 @@ typedef struct __MAZE {
 } Maze;
 
 
-// variables to count char "S" "E" 
-int S = 0;
-int E = 0;
+// variables to verify if char "S" and "E" present
+// (If exists then S,E= true) (Loaded successfully = both true)
+bool S = false;
+bool E = false;
 
 
 // initiate the coordinates of the player and shd be fitted in maze[][]
-int corX = 0; // rows
-int corY = 0; // columns
+int corX; // rows
+int corY; // columns
 
 
 void OpenMaze (char filename) {
     // reads in the file 
     // scan through the lines
-    // If "S" is detected, S++
-    // If "E" is detected, E++
-    // Loaded successful when (S = 1 and E = 1)
+    // If "S" is detected, S = true (Save Coordinates of S)
+    // If "E" is detected, E = true
+    // Loaded successful when (S = true and E = true)
     // if not then return error message
 }
 
@@ -38,24 +39,24 @@ char PrintMaze () {
     
 }
 
-bool Compare (int x, int y) {
+bool IsPath (int x, int y) {
     // search the char in maze[][]
     // get the ASCII code of that char
-    // compare
+    // check if it takes the correct path or hits the wall/border 
 
     /**
-    if (ASCII = "X") {
+    if (ASCII = "#") {
         return false; (cannot go)
     }
     else {
-        return true; (IT IS a " " or "W" or "S")
+        return true; (IT IS a " " or "E" or "S")
     }
     */
 }
 
-bool Win (int x, int y) {
+bool IsWin (int x, int y) {
     
-    // Check if its a "W" by ASCII
+    // Check the current position if its a "E" by ASCII
     // Yes: print congratulations and exit the game
     // No: continue the game
     
@@ -71,6 +72,8 @@ int main (int argc, char* argv[]) {
 
     OpenMaze (filename);
 
+    // Initiate corX and corY by coordinate of S
+
     PrintMaze();
     
 
@@ -82,9 +85,9 @@ int main (int argc, char* argv[]) {
         case "a":
 
             corX = corX - 1;
-            if (Compare (corX, corY)) {  // Bool function return true if player move into " "
+            if (IsPath (corX, corY)) {  // Bool function return true if player move into " "
                 printf("You went to the left!");
-                Win (corX, corY);  // see if they have arrived "E" yet
+                IsWin (corX, corY);  // see if they have arrived "E" yet
             else {
                 corX = corX + 1;
                 printf("You hit the wall :(");
@@ -97,9 +100,9 @@ int main (int argc, char* argv[]) {
         case "s":
 
             corY = corY + 1;
-            if (Compare (corX, corY)) {  // Bool function return true if player move into " "
+            if (IsPath (corX, corY)) {  // Bool function return true if player move into " "
                 printf("You went down!");
-                Win (corX, corY);  // see if they have arrived "E" yet
+                IsWin (corX, corY);  // see if they have arrived "E" yet
             else {
                 corY = corY - 1;
                 printf("You hit the wall :(");
@@ -112,9 +115,9 @@ int main (int argc, char* argv[]) {
         case "d":
 
             corX = corX + 1;
-            if (Compare (corX, corY)) {  // Bool function return true if player move into " "
+            if (IsPath (corX, corY)) {  // Bool function return true if player move into " "
                 printf("You went to the right!");
-                Win (corX, corY);  // see if they have arrived "E" yet
+                IsWin (corX, corY);  // see if they have arrived "E" yet
             else {
                 corX = corX - 1;
                 printf("You hit the wall :(");
@@ -127,9 +130,9 @@ int main (int argc, char* argv[]) {
         case "w":
 
             corY = corY - 1;
-            if (Compare (corX, corY)) {  // Bool function return true if player move into " "
+            if (IsPath (corX, corY)) {  // Bool function return true if player move into " "
                 printf("You went up!");
-                Win (corX, corY);  // see if they have arrived "E" yet
+                IsWin (corX, corY);  // see if they have arrived "E" yet
             else {
                 corY = corY + 1;
                 printf("You hit the wall :(");
