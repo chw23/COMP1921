@@ -217,7 +217,7 @@ else
     echo "FAIL"
 fi
 
-# It keeps going towards 'X' (walls & edges)
+# It keeps going towards '#' (walls & edges)
 echo -n "Opstacle handling - "
 
 ./maze testcases/test1.txt < inputs/touchingX.txt > tmp
@@ -228,6 +228,13 @@ then
 else
     echo "FAIL"
 fi
+
+# Test for whether the player has not moved when hit a wall
+--> open Map function 
+--> check for the specific row
+--> compare if players position is the same or not
+
+# Testing for player at edges!!
 
 # Testing if the map is shown when "M" is entered
 echo -n "Map showing - "
