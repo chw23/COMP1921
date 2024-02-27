@@ -57,9 +57,20 @@ bool IsPath (int x, int y) {
 bool IsWin (int x, int y) {
     
     // Check the current position if its a "E" by ASCII
-    // Yes: print congratulations and exit the game
-    // No: continue the game
+    // true: print congratulations and exit the game
+    // false: continue the game
     
+}
+
+bool IsOut (int x, int y) {
+
+    // Check if the player is out of the maze (touching the edge)
+    // corX and corY are checked if they are within the number of rows and columns of the maze
+    // out of the border: true
+    // within the border: false
+
+    // true: print "This is the edge, you cannot go further :("
+    // false: continue
 }
 
 int main (int argc, char* argv[]) {
@@ -77,7 +88,6 @@ int main (int argc, char* argv[]) {
     PrintMaze();
     
 
-
     // Start playing the maze
 
     switch (input) {
@@ -90,10 +100,14 @@ int main (int argc, char* argv[]) {
                 IsWin (corX, corY);  // see if they have arrived "E" yet
             else {
                 corX = corX + 1;
-                printf("You hit the wall :(");
+                if (IsOut(corX, corY)) {
+                    printf("This is the edge, you cannot go further :(\n");
+                }
+                else {
+                    printf("You hit the wall :(\n");
                 }
             }
-            
+            }
             break;
 
         case "S":
@@ -102,11 +116,15 @@ int main (int argc, char* argv[]) {
             corY = corY + 1;
             if (IsPath (corX, corY)) {  // Bool function return true if player move into " "
                 printf("You went down!");
-                IsWin (corX, corY);  // see if they have arrived "E" yet
             else {
                 corY = corY - 1;
-                printf("You hit the wall :(");
+                if (IsOut(corX, corY)) {
+                    printf("This is the edge, you cannot go further :(\n");
                 }
+                else {
+                    printf("You hit the wall :(\n");
+                }
+            }
             }
 
             break;
@@ -119,9 +137,14 @@ int main (int argc, char* argv[]) {
                 printf("You went to the right!");
                 IsWin (corX, corY);  // see if they have arrived "E" yet
             else {
-                corX = corX - 1;
-                printf("You hit the wall :(");
+                corX = corX -1;
+                if (IsOut(corX, corY)) {
+                    printf("This is the edge, you cannot go further :(\n");
                 }
+                else {
+                    printf("You hit the wall :(\n");
+                }
+            }
             }
 
             break;
@@ -135,8 +158,13 @@ int main (int argc, char* argv[]) {
                 IsWin (corX, corY);  // see if they have arrived "E" yet
             else {
                 corY = corY + 1;
-                printf("You hit the wall :(");
+                if (IsOut(corX, corY)) {
+                    printf("This is the edge, you cannot go further :(\n");
                 }
+                else {
+                    printf("You hit the wall :(\n");
+                }
+            }
             }
             break;
 
