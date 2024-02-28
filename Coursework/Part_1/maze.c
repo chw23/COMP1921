@@ -83,7 +83,7 @@ int main (int argc, char* argv[]) {
 
     OpenMaze (filename);
 
-    // Initiate corX and corY by coordinate of S
+    // Initiate corX and corY by coordinate of S (maze[?][?])
 
     PrintMaze();
     

@@ -172,7 +172,7 @@ fi
 # Testing to go right
 echo -n "Testing going right - "
 
-echo "D" | ./maze testcases/test1.txt > tmp
+echo "D" | ./maze testcases/Navigation.txt > tmp
 
 if grep -q "You went to the right!" tmp;
 then
@@ -184,7 +184,7 @@ fi
 # Testing to go left
 echo -n "Testing going left - "
 
-echo "A" | ./maze testcases/test1.txt > tmp
+echo "A" | ./maze testcases/Navigation.txt > tmp
 
 if grep -q "You went to the left!" tmp;
 then
@@ -196,7 +196,7 @@ fi
 # Testing to go up
 echo -n "Testing going up - "
 
-echo "W" | ./maze testcases/test1.txt > tmp
+echo "W" | ./maze testcases/Navigation.txt > tmp
 
 if grep -q "You went up!" tmp;
 then
@@ -208,7 +208,7 @@ fi
 #Testing to go down
 echo -n "Testing going down - "
 
-echo "S" | ./maze testcases/test1.txt > tmp
+echo "S" | ./maze testcases/Navigation.txt > tmp
 
 if grep -q "You went down!" tmp;
 then
@@ -229,24 +229,24 @@ else
     echo "FAIL"
 fi
 
-# Test for whether the player has not moved when hit a wall
-echo -n "Coordinates record - "
-
-./maze testcases/test2.txt < inputs/Coordinates.txt > tmp
-
-if grep -x -q "#S X#";
-then
-    echo "PASS"
-else
-    echo "FAIL"
-fi
-
 # Testing for player at edges
 echo -n "Going to the edge - "
 
 ./maze testcases/Edge.txt < inputs/touchingEdge.txt > tmp
 
 if grep -q "This is the edge, you cannot go further :(" tmp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+# Test for whether the player has not moved when hit a wall
+echo -n "Coordinates record - "
+
+./maze testcases/test2.txt < inputs/Coordinates.txt > tmp
+
+if grep -x -q "#S X#";
 then
     echo "PASS"
 else
